@@ -1,0 +1,25 @@
+<div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-md shadow-md">
+    <h2 class="text-2xl font-bold mb-4 text-center">Add Workout</h2>
+    <form (submit)="onSubmit()">
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700">User Name:</label>
+        <input id="name" [(ngModel)]="userName" name="userName" required class="w-full p-2 border rounded-md" />
+      </div>
+      <div class="mb-4">
+        <label for="workoutType" class="block text-gray-700">Workout Type:</label>
+        <select id="workoutType" [(ngModel)]="workoutType" name="workoutType" required class="w-full p-2 border rounded-md">
+          <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
+        </select>
+      </div>
+      <div class="mb-4">
+        <label for="minutes" class="block text-gray-700">Workout Minutes:</label>
+        <div class="flex">
+          <button type="button" (click)="decrementMinutes()" class="px-2 py-1 border">-</button>
+          <input id="minutes" type="number" [(ngModel)]="workoutMinutes" name="workoutMinutes" required class="w-full p-2 border rounded-md text-center" />
+          <button type="button" (click)="incrementMinutes()" class="px-2 py-1 border">+</button>
+        </div>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-md">Add Workout</button>
+    </form>
+  </div>
+  

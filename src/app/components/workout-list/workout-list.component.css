@@ -1,0 +1,18 @@
+/* workout-list.component.css */
+.container {
+    max-width: 800px; /* Adjust as needed */
+  }
+  
+  .workout-form {
+    margin-bottom: 2rem; /* Space between form and list */
+  }
+  
+  .workout-list {
+    margin-top: 40px; /* Ensure some top margin to avoid overlap */
+  }
+  
+  .table-container {
+    max-width: 100%;
+    overflow-x: auto; /* Ensure table is scrollable if too wide */
+  }
+  

@@ -1,0 +1,42 @@
+<div class="container mx-auto mt-10 p-6 bg-white rounded-md shadow-md">
+  <!-- Workout Form -->
+  <div class="workout-form mb-6">
+    <!-- Your workout form code here -->
+  </div>
+
+  <!-- Workout List -->
+  <div class="workout-list">
+    <div class="flex justify-between mb-4">
+      <input
+        type="text"
+        placeholder="Search by name"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="applyFilter()"
+        class="p-2 border rounded-md"
+      />
+      <select [(ngModel)]="selectedWorkoutType" (change)="applyFilter()" class="p-2 border rounded-md">
+        <option value="">All Workout Types</option>
+        <option *ngFor="let type of workoutTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+    <table class="min-w-full bg-white">
+      <thead>
+        <tr>
+          <th class="py-2 px-4 border-b">Name</th>
+          <th class="py-2 px-4 border-b">Workouts</th>
+          <th class="py-2 px-4 border-b">Number of Workouts</th>
+          <th class="py-2 px-4 border-b">Total Workout Minutes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of filteredUsers | paginate: { itemsPerPage: 5, currentPage: currentPage }">
+          <td class="py-2 px-4 border-b">{{ user.name }}</td>
+          <td class="py-2 px-4 border-b">{{ getWorkoutTypes(user) }}</td>
+          <td class="py-2 px-4 border-b">{{ user.workouts.length }}</td>
+          <td class="py-2 px-4 border-b">{{ getTotalWorkoutMinutes(user) }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <pagination-controls (pageChange)="currentPage = $event"></pagination-controls>
+  </div>
+</div>
